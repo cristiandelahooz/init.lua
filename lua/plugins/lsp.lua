@@ -12,6 +12,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+				"python-lsp-server",
 				"haskell-language-server",
 				"jdtls",
 			})
