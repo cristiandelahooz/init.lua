@@ -116,6 +116,8 @@ function RunCurrentFile()
 		bash = "./" .. filename,
 		haskell = "ghc " .. filename .. " -o " .. output_file .. "&& ./" .. output_file .. "&& rm ./*{.o,.hi,output}",
 		java = "gd run",
+		typescriptreact = "tsx " .. filename,
+		javascriptreact = "node " .. filename,
 	}
 
 	if commands[filetype] then
