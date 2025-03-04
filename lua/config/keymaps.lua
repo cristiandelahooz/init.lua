@@ -41,6 +41,10 @@ keymap.set("n", "J", "mzJ`z") -- Join lines without move cursor
 --paste without yanking
 keymap.set("x", "<leader>p", [["_dP]])
 
+--yank to system clipboard
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap.set({ "n", "v" }, "<leader>Y", [["+yg_]])
+
 --Tmux-sessionizer controller
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
