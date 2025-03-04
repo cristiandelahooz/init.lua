@@ -15,6 +15,7 @@ return {
 				"python-lsp-server",
 				"haskell-language-server",
 				"jdtls",
+				"gradle-language-server",
 			})
 		end,
 	},
