@@ -41,6 +41,9 @@ keymap.set("n", "J", "mzJ`z") -- Join lines without move cursor
 --paste without yanking
 keymap.set("x", "<leader>p", [["_dP]])
 
+--Tmux-sessionizer controller
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
