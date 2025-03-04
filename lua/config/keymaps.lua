@@ -32,6 +32,11 @@ keymap.set("n", "dw", 'vb"_d')
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
+--move selected line / block of text in visual mode
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+keymap.set("n", "J", "mzJ`z") -- Join lines without move cursor
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
