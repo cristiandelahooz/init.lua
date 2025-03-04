@@ -107,7 +107,7 @@ function RunCurrentFile()
 	}
 
 	if commands[filetype] then
-		vim.cmd(":term " .. commands[filetype]) -- Run program
+		vim.cmd(":tabnew | term " .. commands[filetype]) -- Run program
 	else
 		print("No execution command set for filetype: " .. filetype)
 	end
