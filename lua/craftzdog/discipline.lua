@@ -11,12 +11,12 @@ function M.cowboy()
 			if vim.v.count > 0 then
 				count = 0
 			end
-			if count >= 40 and vim.bo.buftype ~= "nofile" then
+			if count >= 10 and vim.bo.buftype ~= "nofile" then
 				ok = pcall(vim.notify, "Hold it Cowboy!", vim.log.levels.WARN, {
 					icon = "🤠",
 					id = "cowboy",
 					keep = function()
-						return count >= 40
+						return count >= 10
 					end,
 				})
 				if not ok then
