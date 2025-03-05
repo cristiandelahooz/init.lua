@@ -55,6 +55,8 @@ keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
+--Dont judge me
+keymap.set("i", "<C-c>", "<Esc>", opts)
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
