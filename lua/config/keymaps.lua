@@ -47,6 +47,7 @@ keymap.set({ "n", "v" }, "<leader>Y", [["+yg_]])
 
 --Tmux-sessionizer controller
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap.set("n", "<C-g>", "<cmd>silent !ide<CR>", opts)
 
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
@@ -79,10 +80,10 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Diagnostics
+--[[ Diagnostics
 keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
-end, opts)
+end, opts)--]]
 
 keymap.set("n", "<leader>r", function()
 	require("craftzdog.hsl").replaceHexWithHSL()
