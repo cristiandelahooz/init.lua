@@ -3,11 +3,11 @@ local delahozGroup = augroup("delahoz", {})
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Turn off paste mode when leaving insert
-autocmd("InsertLeave", {
+--[[autocmd("InsertLeave", {
 	group = delahozGroup,
 	pattern = "*",
 	command = "set nopaste",
-})
+})]]
 
 -- Disable the concealing in some file formats
 -- The default conceallevel is 3 in LazyVim
@@ -17,6 +17,12 @@ autocmd("FileType", {
 	callback = function()
 		vim.opt.conceallevel = 0
 	end,
+})
+
+autocmd("BufRead", {
+	group = delahozGroup,
+	pattern = "*.conf",
+	command = "set filetype=apache",
 })
 
 autocmd("LspAttach", {
