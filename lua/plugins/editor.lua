@@ -59,15 +59,6 @@ return {
 		},
 		keys = {
 			{
-				"<leader>fP",
-				function()
-					require("telescope.builtin").find_files({
-						cwd = require("lazy.core.config").options.root,
-					})
-				end,
-				desc = "Find Plugin File",
-			},
-			{
 				";f",
 				function()
 					local builtin = require("telescope.builtin")
@@ -129,7 +120,7 @@ return {
 				desc = "Lists Function names, variables, from Treesitter",
 			},
 			{
-				"sf",
+				"<leader>pv",
 				function()
 					local telescope = require("telescope")
 
@@ -143,7 +134,6 @@ return {
 						respect_gitignore = false,
 						hidden = true,
 						grouped = true,
-						previewer = false,
 						initial_mode = "normal",
 						layout_config = { height = 40 },
 					})
@@ -167,8 +157,7 @@ return {
 			})
 			opts.pickers = {
 				diagnostics = {
-					theme = "ivy",
-					initial_mode = "normal",
+					--theme = "ivy",
 					layout_config = {
 						preview_cutoff = 9999,
 					},
@@ -176,9 +165,7 @@ return {
 			}
 			opts.extensions = {
 				file_browser = {
-					theme = "dropdown",
 					-- disables netrw and use telescope-file-browser in its place
-					hijack_netrw = true,
 					mappings = {
 						-- your custom insert mode mappings
 						["n"] = {
@@ -209,28 +196,6 @@ return {
 			require("telescope").load_extension("file_browser")
 		end,
 	},
-
-	{
-		"kazhala/close-buffers.nvim",
-		event = "VeryLazy",
-		keys = {
-			{
-				"<leader>th",
-				function()
-					require("close_buffers").delete({ type = "hidden" })
-				end,
-				"Close Hidden Buffers",
-			},
-			{
-				"<leader>tu",
-				function()
-					require("close_buffers").delete({ type = "nameless" })
-				end,
-				"Close Nameless Buffers",
-			},
-		},
-	},
-
 	{
 		"saghen/blink.cmp",
 		opts = {
