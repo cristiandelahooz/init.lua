@@ -30,8 +30,8 @@ autocmd("LspAttach", {
 	callback = function(e)
 		local opts = { buffer = e.buf }
 		vim.keymap.set("n", "<leader>f", function()
-			vim.lsp.buf.format()
-		end, opts)
+			LazyVim.format({ force = true })
+		end, { desc = "Format" })
 		vim.keymap.set("n", "<leader>rn", function()
 			vim.lsp.buf.rename()
 		end, opts)
