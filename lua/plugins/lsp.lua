@@ -16,6 +16,7 @@ return {
 				"haskell-language-server",
 				"jdtls",
 				"gradle-language-server",
+				"buf",
 			})
 		end,
 	},
