@@ -36,10 +36,10 @@ autocmd("LspAttach", {
 			vim.lsp.buf.rename()
 		end, opts)
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_next()
+			vim.diagnostic.get_next()
 		end, opts)
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_prev()
+			vim.diagnostic.get_prev()
 		end, opts)
 	end,
 })
