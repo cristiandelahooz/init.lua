@@ -178,7 +178,7 @@ return {
 		},
 		keys = {
 			{
-				"<C-S-i>",
+				";z",
 				function()
 					Snacks.zen.zoom()
 				end,
