@@ -81,6 +81,9 @@ return {
 				mode = "tabs",
 				show_buffer_close_icons = false,
 				show_close_icon = false,
+				numbers = function(opts)
+					return string.format("%s·%s", opts.raise(opts.id), opts.lower(opts.ordinal))
+				end,
 			},
 		},
 	},
@@ -171,6 +174,15 @@ return {
                                       --                               
    ]],
 				},
+			},
+		},
+		keys = {
+			{
+				"<C-S-i>",
+				function()
+					Snacks.zen.zoom()
+				end,
+				desc = "Toggle zoom mode",
 			},
 		},
 	},
