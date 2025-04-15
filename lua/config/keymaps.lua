@@ -46,7 +46,7 @@ keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set({ "n", "v" }, "<leader>Y", [["+yg_]])
 
 --Tmux-sessionizer controller
-keymap.set("n", "<C-w>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap.set("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 keymap.set("n", "<C-g>", "<cmd>silent !ide<CR>", opts)
 
 -- Save with root permission (not working for now)
