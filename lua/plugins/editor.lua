@@ -183,18 +183,10 @@ return {
 							["/"] = function()
 								vim.cmd("startinsert")
 							end,
-							["<C-u>"] = function(prompt_bufnr)
-								for i = 1, 10 do
-									actions.move_selection_previous(prompt_bufnr)
-								end
-							end,
-							["<C-d>"] = function(prompt_bufnr)
-								for i = 1, 10 do
-									actions.move_selection_next(prompt_bufnr)
-								end
-							end,
-							["<PageUp>"] = actions.preview_scrolling_up,
-							["<PageDown>"] = actions.preview_scrolling_down,
+							["<C-p>"] = actions.move_selection_previous,
+							["<C-n>"] = actions.move_selection_next,
+							["<C-u>"] = actions.preview_scrolling_up,
+							["<C-d>"] = actions.preview_scrolling_down,
 						},
 					},
 				},
