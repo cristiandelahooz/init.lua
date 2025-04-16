@@ -16,6 +16,7 @@ return {
 				"haskell-language-server",
 				"jdtls",
 				"gradle-language-server",
+				"google-java-format",
 				"buf",
 			})
 		end,
@@ -26,7 +27,7 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			inlay_hints = { enabled = false },
-			---@type lspconfig.options
+			---@type vim.lsp.Config
 			servers = {
 				cssls = {},
 				tailwindcss = {
