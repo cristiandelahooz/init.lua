@@ -45,6 +45,17 @@ return {
 		end,
 	},
 
+	{
+		"stevearc/conform.nvim",
+		dependencies = {
+			"mason.nvim",
+		},
+		opts = function(_, opts)
+			opts.formatters_by_ft = {
+				java = { "google-java-format" },
+			}
+		end,
+	},
 	-- copilot
 	{
 		"zbirenbaum/copilot.lua",
