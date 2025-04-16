@@ -1,85 +1,117 @@
-# init.lua
+---
 
-This repository contains my personal Neovim configuration, built using [LazyVim](https://github.com/LazyVim/LazyVim), a modern Neovim configuration framework.
+# `init.lua` ⚡
 
-## Getting Started
+Welcome to the **`init.lua`** repository! This project is a configuration file for Neovim, written in Lua, to supercharge your development experience. 🚀
 
-Follow the steps below to install and set up this configuration:
+---
 
-### Prerequisites
+## 🌟 Features
 
-1. **Install Neovim**  
-   Ensure you have Neovim (version 0.9 or higher) installed. You can download it from [neovim.io](https://neovim.io).
+- **Lightweight and Fast**: Optimized for a blazing-fast editing experience.
+- **Written in Lua**: Harnessing the full power of Lua for Neovim configuration.
+- **Customizable**: Easy-to-modify and extend to suit your workflow.
+- **Modern Plugins**: Leverages the latest and greatest plugins in the Neovim ecosystem.
 
-2. **Install a Nerd Font**  
-   LazyVim uses icons that require a Nerd Font. You can download and install one from [Nerd Fonts](https://www.nerdfonts.com/).
+---
 
-3. **Install Git**  
-   Ensure Git is installed on your system to clone the configuration.
+## 📂 Directory Structure
+``` bash
+.
+├── init.lua                        # Main Neovim config file – loads core setup and plugins
+├── lua
+│   ├── config
+│   │   ├── autocmds.lua           # Custom auto commands (e.g., format on save, highlight yank)
+│   │   ├── keymaps.lua            # All your custom keybindings
+│   │   ├── lazy.lua               # Plugin manager setup and plugin loading logic
+│   │   └── options.lua            # General Neovim options (e.g., line numbers, tabs, UI)
+│   ├── sakidoa                    # just a personal phrase
+│   │   ├── discipline.lua         # Optional plugin or module for keeping code discipline (e.g., WIP features)
+│   │   ├── hsl.lua                # Utility for color manipulation using HSL values
+│   │   └── lsp.lua                # Customizations for LSP (servers, handlers, etc.)
+│   ├── plugins
+│   │   ├── coding.lua             # Plugins focused on coding productivity (e.g., snippets, autocomplete)
+│   │   ├── colorscheme.lua        # Color scheme and theme plugins
+│   │   ├── editor.lua             # Core editor enhancements (commenting, indenting, etc.)
+│   │   ├── lsp.lua                # Language Server Protocol setup (installers, configs)
+│   │   ├── tmux-navigation.lua    # Seamless navigation between tmux and Neovim splits
+│   │   ├── treesitter.lua         # Treesitter config for syntax highlighting and parsing
+│   │   └── ui.lua                 # UI/UX improvements (statusline, filetree, notifications)
+│   └── util
+│       └── debug.lua              # Helper functions for debugging Lua/Nvim configurations
+└── README.md                      # Project documentation and setup guide
+```
+---
 
-### Backing Up Your Current Configuration
+## 🚀 Getting Started
 
-Before installing this configuration, make a backup of your existing Neovim configuration (if any) to avoid losing it.
+Sigue estos pasos para comenzar con esta configuración:
 
-1. **Create a Backup**  
-   Run the following command to move your current Neovim configuration to a backup folder:
+### 1. Make a backup of your current Neovim files:
 
-   ```bash
-   mv ~/.config/nvim ~/.config/nvim.bak
-   ```
+```bash
+# Configuración principal
+mv ~/.config/nvim{,.bak}
 
-2. **Restore the Backup (if needed)**  
-   If you want to restore your previous configuration, use the following command to move the backup back to the original location:
-
-   ```bash
-   mv ~/.config/nvim.bak ~/.config/nvim
-   ```
-
-### Installation
-
-1. **Clone the Repository**  
-   Clone this repository into your Neovim configuration directory:
-
-   ```bash
-   git clone https://github.com/cristiandelahooz/init.lua.git ~/.config/nvim
-   ```
-
-2. **Launch Neovim**  
-   Open Neovim. LazyVim will automatically install its dependencies and plugins on the first launch:
-
-   ```bash
-   nvim
-   ```
-
-3. **Restart Neovim**  
-   After the installation is complete, restart Neovim to apply the configuration.
-
-### Updating the Configuration
-
-To update the configuration and plugins, run the following command within Neovim:
-
-```vim
-:Lazy update
+# Datos compartidos y temporales
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
 ```
 
-### Troubleshooting
+### 2. Clone this repo
 
-If you encounter issues, you can reset your plugin installation by deleting the `~/.local/share/nvim` directory and relaunching Neovim.
+```bash
+git clone https://github.com/cristiandelahooz/init.lua.git ~/.config/nvim
+```
 
-## Features
+### 3. Remove the .git folder, so you can add it to your own repo later
 
-- **Modern and Minimalist**: LazyVim provides a clean and functional setup, perfect for beginners and experienced users alike.
-- **Highly Extendable**: Easily add or customize plugins and settings to fit your workflow.
-- **Optimized for Performance**: LazyVim is designed to be fast and efficient.
+```bash
+rm -rf ~/.config/nvim/.git
+```
 
-## Customization
+### 4. Start Neovim 🚀
 
-You can customize the configuration by editing the `init.lua` file and other files in the `lua` directory. Refer to the [LazyVim documentation](https://github.com/LazyVim/LazyVim) for guidance.
+```bash
+nvim
+```
 
-## Contributing
+---
 
-Feel free to fork this repository and make it your own. Contributions are welcome!
+## 🛠️ Customization
 
-## License
+You can easily tweak the configuration to match your preferences:
 
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- **Add Plugins**: Add plugins to the `plugins` section.
+- **Change Keymaps**: Modify key mappings in the `keymaps` section.
+- **Adjust Settings**: Update settings in the `init.lua` file.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request if you have ideas or improvements.
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature-name`.
+3. Commit your changes: `git commit -m 'Add your message here'`.
+4. Push to the branch: `git push origin feature/your-feature-name`.
+5. Open a Pull Request.
+---
+# 📌 **Important Note:**  
+> This repository is originally based on the great work by [@craftzdog](https://github.com/craftzdog/dotfiles-public).  
+> Many configurations and structural ideas were adapted and customized from his public dotfiles.
+---
+---
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+---
+
+## 🌐 Connect
+
+- **Author**: [Cristian De La Hooz](https://github.com/cristiandelahooz)
+- **GitHub**: [https://github.com/cristiandelahooz/init.lua](https://github.com/cristiandelahooz/init.lua)
+
+---
