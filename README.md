@@ -18,7 +18,7 @@ Welcome to the **`init.lua`** repository! This project is a configuration file f
 ## 📂 Directory Structure
 ``` bash
 .
-├── init.lua                        # Main Neovim config file – loads core setup and plugins
+├── init.lua                       # Main Neovim config file – loads core setup and plugins
 ├── lua
 │   ├── config
 │   │   ├── autocmds.lua           # Custom auto commands (e.g., format on save, highlight yank)
