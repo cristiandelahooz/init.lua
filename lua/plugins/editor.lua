@@ -2,7 +2,7 @@ return {
 	{
 		enabled = false,
 		"folke/flash.nvim",
-		---@type Flash.Config
+		---@type flash.config
 		opts = {
 			search = {
 				forward = true,
@@ -61,6 +61,7 @@ return {
 			{
 				";f",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.find_files({
 						no_ignore = false,
@@ -72,6 +73,7 @@ return {
 			{
 				";r",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.live_grep({
 						additional_args = { "--hidden" },
@@ -82,6 +84,7 @@ return {
 			{
 				"\\\\",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.buffers()
 				end,
@@ -90,6 +93,7 @@ return {
 			{
 				";t",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.help_tags()
 				end,
@@ -98,6 +102,7 @@ return {
 			{
 				";e",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.diagnostics()
 				end,
@@ -106,6 +111,7 @@ return {
 			{
 				";s",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.treesitter()
 				end,
@@ -114,6 +120,7 @@ return {
 			{
 				";c",
 				function()
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.lsp_incoming_calls()
 				end,
@@ -144,8 +151,10 @@ return {
 		config = function(_, opts)
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
+			---@diagnostic disable-next-line
 			local fb_actions = require("telescope").extensions.file_browser.actions
 
+			---@diagnostic disable-next-line
 			opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
 				wrap_results = true,
 				layout_strategy = "horizontal",
