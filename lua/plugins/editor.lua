@@ -2,7 +2,6 @@ return {
 	{
 		enabled = false,
 		"folke/flash.nvim",
-		---@type flash.config
 		opts = {
 			search = {
 				forward = true,
@@ -26,8 +25,9 @@ return {
 						local nh, ns, nl = match:match("hsl%((%d+),? (%d+)%%?,? (%d+)%%?%)")
 						--- @type number?, number?, number?
 						local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
-						--- @type string
+            ---@diagnostic disable-next-line
 						local hex_color = utils.hslToHex(h, s, l)
+            ---@diagnostic disable-next-line
 						return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
 					end,
 				},
@@ -179,15 +179,15 @@ return {
 						-- your custom insert mode mappings
 						["n"] = {
 							-- your custom normal mode mappings
+              ---@diagnostic disable-next-line
 							["N"] = fb_actions.create,
+              ---@diagnostic disable-next-line
 							["h"] = fb_actions.goto_parent_dir,
 							["/"] = function()
 								vim.cmd("startinsert")
 							end,
 							["<C-p>"] = actions.move_selection_previous,
 							["<C-n>"] = actions.move_selection_next,
-							["<C-u>"] = actions.preview_scrolling_up,
-							["<C-d>"] = actions.preview_scrolling_down,
 						},
 					},
 				},
