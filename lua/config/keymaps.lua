@@ -107,7 +107,7 @@ end, {})
     - zsh
     - bash
     - haskell
-    - java
+    - java - [gradle]
 ]]
 function RunCurrentFile()
 	local filetype = vim.bo.filetype
