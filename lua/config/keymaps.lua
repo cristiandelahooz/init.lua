@@ -30,7 +30,7 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- One of the betters remaps ever, this is a go one
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set("n", "<leader>s", [[:%s/<C-r><C-w>]])
 
 --move selected line / block of text in visual mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
