@@ -85,7 +85,16 @@ return {
 					return string.format("%s·%s", opts.raise(opts.id), opts.lower(opts.ordinal))
 				end,
 			},
-		},
+      highlights = function ()
+        local M = {}
+			local colors = require("solarized-osaka.colors").setup()
+       M.buffer_selected = {
+          fg = colors.orange500,
+          bg = colors.none,
+        } 
+        return M
+      end
+    },
 	},
 
 	-- filename
@@ -112,8 +121,9 @@ return {
 					if vim.bo[props.buf].modified then
 						filename = "[+] " .. filename
 					end
-
+            ---@diagnostic disable-next-line
 					local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+            ---@diagnostic disable-next-line
 					return { { icon, guifg = color }, { " " }, { filename } }
 				end,
 			})
@@ -125,6 +135,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		opts = function(_, opts)
 			local LazyVim = require("lazyvim.util")
+      ---@diagnostic disable-next-line
 			opts.sections.lualine_c[4] = {
 				LazyVim.lualine.pretty_path({
 					length = 0,
