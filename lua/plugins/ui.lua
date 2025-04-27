@@ -87,11 +87,10 @@ return {
 			},
       highlights = function ()
         local M = {}
-			local colors = require("solarized-osaka.colors").setup()
-       M.buffer_selected = {
-          fg = colors.orange500,
-          bg = colors.none,
-        } 
+        local colors = require("solarized-osaka.colors").setup()
+        M.buffer_selected = {
+            fg = colors.orange500,
+          } 
         return M
       end
     },
@@ -149,6 +148,12 @@ return {
 			}
 		end,
 	},
+  -- cursor animation
+  {
+    "sphamba/smear-cursor.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 
 	{
 		"folke/zen-mode.nvim",
