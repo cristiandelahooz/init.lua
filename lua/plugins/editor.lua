@@ -25,9 +25,9 @@ return {
 						local nh, ns, nl = match:match("hsl%((%d+),? (%d+)%%?,? (%d+)%%?%)")
 						--- @type number?, number?, number?
 						local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
-            ---@diagnostic disable-next-line
+						---@diagnostic disable-next-line
 						local hex_color = utils.hslToHex(h, s, l)
-            ---@diagnostic disable-next-line
+						---@diagnostic disable-next-line
 						return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
 					end,
 				},
@@ -61,7 +61,7 @@ return {
 			{
 				";;",
 				function()
-          ---@type table
+					---@type table
 					local builtin = require("telescope.builtin")
 					builtin.resume()
 				end,
@@ -188,9 +188,9 @@ return {
 						-- your custom insert mode mappings
 						["n"] = {
 							-- your custom normal mode mappings
-              ---@diagnostic disable-next-line
+							---@diagnostic disable-next-line
 							["N"] = fb_actions.create,
-              ---@diagnostic disable-next-line
+							---@diagnostic disable-next-line
 							["h"] = fb_actions.goto_parent_dir,
 							["/"] = function()
 								vim.cmd("startinsert")
