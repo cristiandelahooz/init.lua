@@ -26,6 +26,9 @@ keymap.set("i", "qj", "<Esc>:w<CR>")
 keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
 keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
 
+--exit all
+keymap.set("n", "Q", [[:qall<CR>]])
+
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
