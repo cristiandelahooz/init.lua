@@ -59,6 +59,15 @@ return {
 		},
 		keys = {
 			{
+				";;",
+				function()
+          ---@type table
+					local builtin = require("telescope.builtin")
+					builtin.resume()
+				end,
+				desc = "Resume the previous telescope picker",
+			},
+			{
 				";f",
 				function()
 					---@type table
@@ -186,8 +195,6 @@ return {
 							["/"] = function()
 								vim.cmd("startinsert")
 							end,
-							["<C-p>"] = actions.move_selection_previous,
-							["<C-n>"] = actions.move_selection_next,
 						},
 					},
 				},
