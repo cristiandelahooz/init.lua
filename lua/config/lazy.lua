@@ -15,8 +15,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	spec = {
+local M = {}
+local extras = "lazyvim.plugins.extras"
+	M.spec = {
 		-- add LazyVim and import its plugins
 		{
 			"LazyVim/LazyVim",
@@ -50,8 +51,8 @@ require("lazy").setup({
 		{ import = extras .. ".util.dot" },
 		{ import = extras .. ".util.mini-hipatterns" },
 		{ import = "plugins" },
-	},
-	defaults = {
+	}
+	M.defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
 		-- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
 		lazy = false,
@@ -59,12 +60,12 @@ require("lazy").setup({
 		-- have outdated releases, which may break your Neovim install.
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
-	},
-	dev = {
+	}
+	M.dev = {
 		path = "~/ghq/github.com",
-	},
-	checker = { enabled = true }, -- automatically check for plugin updates
-	performance = {
+	}
+	M.checker = { enabled = true } -- automatically check for plugin updates
+	M.performance = {
 		cache = {
 			enabled = true,
 			-- disable_events = {},
@@ -78,18 +79,18 @@ require("lazy").setup({
 				"netrwPlugin",
 				"rplugin",
 				"tarPlugin",
-				"tohtml",
 				"tutor",
 				"zipPlugin",
 			},
 		},
-	},
-	ui = {
+	}
+	M.ui = {
 		custom_keys = {
 			["<localleader>d"] = function(plugin)
 				dd(plugin)
 			end,
 		},
-	},
-	debug = false,
-})
+	}
+	M.debug = false
+
+require("lazy").setup(M)
