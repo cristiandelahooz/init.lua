@@ -22,6 +22,10 @@ keymap.set("v", "<Leader>D", '"_D')
 -- exit insert mode
 keymap.set("i", "qj", "<Esc>:w<CR>")
 
+--Center screen while scrolling
+keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
+keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
+
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
