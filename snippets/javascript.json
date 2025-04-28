@@ -1,0 +1,27 @@
+{
+	"Console Log": {
+		"prefix": "clg",
+		"body": ["console.log(${1:value});"],
+		"description": "Log output to console"
+	},
+	"Function Declaration": {
+		"prefix": "fn",
+		"body": ["function ${1:name}(${2:params}) {", "\t${3:// body}", "}"],
+		"description": "Create a function declaration"
+	},
+	"Arrow Function": {
+		"prefix": "afn",
+		"body": ["const ${1:name} = (${2:params}) => {", "\t${3:// body}", "}"],
+		"description": "Create an arrow function"
+	},
+	"Import Statement": {
+		"prefix": "imp",
+		"body": ["import ${1:module} from '${2:path}';"],
+		"description": "Import a module"
+	},
+	"Export Statement": {
+		"prefix": "exp",
+		"body": ["export ${1:default }${2:value};"],
+		"description": "Export a value"
+	}
+}
