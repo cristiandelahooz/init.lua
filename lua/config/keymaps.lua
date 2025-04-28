@@ -2,192 +2,96 @@ local discipline = require("sakidoa.discipline")
 
 discipline.cowboy()
 
-local keymap = vim.keymap
+local keymap = require("util.helper_functions").keymap
 local opts = { noremap = true, silent = true }
 
 -- Do things without affecting the registers
-keymap.set("n", "x", '"_x')
-keymap.set("n", "<Leader>p", '"0p')
-keymap.set("n", "<Leader>P", '"0P')
-keymap.set("v", "<Leader>p", '"0p')
-keymap.set("n", "<Leader>c", '"_c')
-keymap.set("n", "<Leader>C", '"_C')
-keymap.set("v", "<Leader>c", '"_c')
-keymap.set("v", "<Leader>C", '"_C')
-keymap.set("n", "<Leader>d", '"_d')
-keymap.set("n", "<Leader>D", '"_D')
-keymap.set("v", "<Leader>d", '"_d')
-keymap.set("v", "<Leader>D", '"_D')
+keymap("n", "x", '"_x', opts, "Delete without yanking")
+keymap("n", "<Leader>p", '"0p', opts, "Paste from yank register")
+keymap("n", "<Leader>P", '"0P', opts, "Paste before from yank register")
+keymap("v", "<Leader>p", '"0p', opts, "Paste from yank register in visual mode")
+keymap("n", "<Leader>c", '"_c', opts, "Change without yanking")
+keymap("n", "<Leader>C", '"_C', opts, "Change to end of line without yanking")
+keymap("v", "<Leader>c", '"_c', opts, "Change selection without yanking")
+keymap("v", "<Leader>C", '"_C', opts, "Change selection to end of line without yanking")
+keymap("n", "<Leader>d", '"_d', opts, "Delete without yanking")
+keymap("n", "<Leader>D", '"_D', opts, "Delete to end of line without yanking")
+keymap("v", "<Leader>d", '"_d', opts, "Delete selection without yanking")
+keymap("v", "<Leader>D", '"_D', opts, "Delete selection to end of line without yanking")
 
--- exit insert mode
-keymap.set("i", "qj", "<Esc>:w<CR>")
+-- Exit insert mode
+keymap("i", "qj", "<Esc>:w<CR>", opts, "Exit insert mode and save")
 
---Center screen while scrolling
-keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
-keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
+-- Center screen while scrolling
+keymap({ "n", "v" }, "<C-u>", "<C-u>zz", opts, "Scroll up and center")
+keymap({ "n", "v" }, "<C-d>", "<C-d>zz", opts, "Scroll down and center")
 
---exit all
-keymap.set("n", "Q", [[:qall<CR>]])
+-- Exit all
+keymap("n", "Q", [[:qall<CR>]], opts, "Quit all")
 
 -- Increment/decrement
-keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
+keymap("n", "+", "<C-a>", opts, "Increment number")
+keymap("n", "-", "<C-x>", opts, "Decrement number")
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap("n", "<C-a>", "gg<S-v>G", opts, "Select all")
 
--- One of the betters remaps ever, this is a go one
-keymap.set("n", "<leader>s", [[:%s/<C-r><C-w>]])
+-- Search and replace
+keymap("n", "<leader>s", [[:%s/<C-r><C-w>]], opts, "Search and replace word under cursor")
 
---move selected line / block of text in visual mode
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Move selected line/block of text in visual mode
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts, "Move selection down")
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts, "Move selection up")
 
-keymap.set("n", "J", "mzJ`z") -- Join lines without move cursor
+-- Join lines without moving cursor
+keymap("n", "J", "mzJ`z", opts, "Join lines without moving cursor")
 
---paste without yanking
-keymap.set("x", "<leader>p", [["_dP]])
+-- Paste without yanking
+keymap("x", "<leader>p", [["_dP]], opts, "Paste without yanking")
 
---yank to system clipboard
-keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-keymap.set({ "n", "v" }, "<leader>Y", [["+yg_]])
+-- Yank to system clipboard
+keymap({ "n", "v" }, "<leader>y", [["+y]], opts, "Yank to system clipboard")
+keymap({ "n", "v" }, "<leader>Y", [["+yg_]], opts, "Yank line to system clipboard")
 
---Tmux-sessionizer controller
-keymap.set("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-keymap.set("n", "<C-g>", "<cmd>silent !ide<CR>", opts)
-
--- Save with root permission (not working for now)
---vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
+-- Tmux-sessionizer controller
+keymap("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts, "Open Tmux sessionizer")
+keymap("n", "<C-g>", "<cmd>silent !ide<CR>", opts, "Open IDE")
 
 -- Disable continuations
-keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
-keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
+keymap("n", "<Leader>o", "o<Esc>^Da", opts, "Insert line below without continuation")
+keymap("n", "<Leader>O", "O<Esc>^Da", opts, "Insert line above without continuation")
 
---Dont judge me
-keymap.set("i", "<C-c>", "<Esc>", opts)
+-- Exit insert mode with Ctrl+C
+keymap("i", "<C-c>", "<Esc>", opts, "Exit insert mode")
+
 -- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts)
+keymap("n", "<C-m>", "<C-i>", opts, "Go forward in jumplist")
 
--- New tab
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- Tab management
+keymap("n", "te", ":tabedit", opts, "Open new tab")
+keymap("n", "<tab>", ":tabnext<Return>", opts, "Go to next tab")
+keymap("n", "<s-tab>", ":tabprev<Return>", opts, "Go to previous tab")
+
 -- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
--- Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
+keymap("n", "ss", ":split<Return>", opts, "Split window horizontally")
+keymap("n", "sv", ":vsplit<Return>", opts, "Split window vertically")
+
+-- Move between windows
+keymap("n", "sh", "<C-w>h", opts, "Move to left window")
+keymap("n", "sk", "<C-w>k", opts, "Move to upper window")
+keymap("n", "sj", "<C-w>j", opts, "Move to lower window")
+keymap("n", "sl", "<C-w>l", opts, "Move to right window")
 
 -- Resize window
-keymap.set("n", "<C-w><left>", "<C-w><")
-keymap.set("n", "<C-w><right>", "<C-w>>")
-keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><down>", "<C-w>-")
+keymap("n", "<C-w><left>", "<C-w><", opts, "Resize window left")
+keymap("n", "<C-w><right>", "<C-w>>", opts, "Resize window right")
+keymap("n", "<C-w><up>", "<C-w>+", opts, "Resize window up")
+keymap("n", "<C-w><down>", "<C-w>-", opts, "Resize window down")
 
---[[ Diagnostics
-keymap.set("n", "<C-j>", function()
-	vim.diagnostic.goto_next()
-end, opts)--]]
-
-keymap.set("n", "<leader>r", function()
-	require("sakidoa.hsl").replaceHexWithHSL()
-end)
-
-keymap.set("n", "<leader>i", function()
+vim.api.nvim_create_user_command("ToggleInlayHints", function()
 	require("sakidoa.lsp").toggleInlayHints()
-end)
+end, {})
 
 vim.api.nvim_create_user_command("ToggleAutoformat", function()
 	require("sakidoa.lsp").toggleAutoformat()
 end, {})
-
---[[ 
-    Run the current file based on the filetype
-    Supported filetypes:
-    - javascript
-    - typescript
-    - c
-    - go
-    - zsh
-    - bash
-    - haskell
-    - java - [gradle]
-]]
-function RunCurrentFile()
-	local filetype = vim.bo.filetype
-	local filename = vim.fn.expand("%")
-	local output_file = "output"
-
-	local commands = {
-		javascript = "node " .. filename,
-		typescript = "tsx " .. filename,
-		c = "gcc " .. filename .. " -o " .. output_file .. " && ./" .. output_file .. " && rm " .. output_file,
-		go = "go run " .. filename,
-		zsh = "./" .. filename,
-		bash = "./" .. filename,
-		haskell = "ghc " .. filename .. " -o " .. output_file .. "&& ./" .. output_file .. "&& rm ./*{.o,.hi,output}",
-		java = "gd run",
-		typescriptreact = "tsx " .. filename,
-		javascriptreact = "node " .. filename,
-	}
-
-	if commands[filetype] then
-		vim.cmd(":tabnew | term " .. commands[filetype]) -- Run program
-	else
-		print("No execution command set for filetype: " .. filetype)
-	end
-end
-
-vim.api.nvim_set_keymap("n", "<leader>r", ":lua RunCurrentFile()<CR>", opts)
-
-local function set_keymaps_for_ft()
-	local ft = vim.bo.filetype
-
-	if ft == "java" then
-		-- Manejo de excepciones en Java
-		vim.keymap.set(
-			"n",
-			"<leader>ee",
-			"otry {<CR>} catch (Exception e) {<CR>throw new RuntimeException(e);<CR>}<Esc>O",
-			{ buffer = true }
-		)
-		vim.keymap.set(
-			"n",
-			"<leader>el",
-			'otry {<CR>} catch (Exception e) {<CR>logger.severe("Error: " + e.getMessage());<CR>}<Esc>O',
-			{ buffer = true }
-		)
-		vim.keymap.set("n", "<leader>ea", 'oassert condition : "Error: " + e.getMessage();<Esc>F";a', { buffer = true })
-		vim.keymap.set(
-			"n",
-			"<leader>ef",
-			'otry {<CR>} catch (Exception e) {<CR>System.err.println("Error: " + e.getMessage());<CR>}<Esc>O',
-			{ buffer = true }
-		)
-	elseif ft == "go" then
-		-- Manejo de errores en Go
-		vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>", { buffer = true })
-		vim.keymap.set("n", "<leader>ea", 'oassert.NoError(err, "")<Esc>F";a', { buffer = true })
-		vim.keymap.set(
-			"n",
-			"<leader>ef",
-			'oif err != nil {<CR>}<Esc>Olog.Fatalf("error: %s\\n", err.Error())<Esc>jj',
-			{ buffer = true }
-		)
-		vim.keymap.set(
-			"n",
-			"<leader>el",
-			'oif err != nil {<CR>}<Esc>O.logger.Error("error", "error", err)<Esc>F.;i',
-			{ buffer = true }
-		)
-	end
-end
-
--- Execute when open a buffer
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "*",
-	callback = set_keymaps_for_ft,
-})
