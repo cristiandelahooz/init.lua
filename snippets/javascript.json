@@ -23,5 +23,36 @@
 		"prefix": "exp",
 		"body": ["export ${1:default }${2:value};"],
 		"description": "Export a value"
+	},
+	"Error Handling Throw New Error (ee)": {
+		"prefix": "ee",
+		"body": [
+			"try {",
+			"\t${1:// code to try}",
+			"} catch (${2:error}) {",
+			"\tthrow new Error(${2:error});",
+			"}"
+		],
+		"description": "Insert try-catch block throwing a new Error."
+	},
+	"Error Handling Console Error (el)": {
+		"prefix": "el",
+		"body": [
+			"try {",
+			"\t${1:// code to try}",
+			"} catch (${2:error}) {",
+			"\tconsole.error(\"Error:\", ${2:error});",
+			"}"
+		],
+		"description": "Insert try-catch block logging error to console.error."
+	},
+	"Error Handling Assertion (ea)": {
+		"prefix": "ea",
+		"body": [
+			"if (!${1:condition}) {",
+			"\tthrow new Error(\"Assertion failed: ${2:message}\");",
+			"}"
+		],
+		"description": "Insert an assertion for error handling."
 	}
 }
