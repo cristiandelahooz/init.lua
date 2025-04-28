@@ -205,21 +205,6 @@ return {
 		end,
 	},
 	{
-		"saghen/blink.cmp",
-		opts = {
-			completion = {
-				menu = {
-					winblend = vim.o.pumblend,
-				},
-			},
-			signature = {
-				window = {
-					winblend = vim.o.pumblend,
-				},
-			},
-		},
-	},
-	{
 		"mbbill/undotree",
 		config = function()
 			vim.keymap.set("n", "<leader>U", vim.cmd.UndotreeToggle)
