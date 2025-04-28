@@ -44,6 +44,7 @@ M.spec = {
 	{ import = extras .. ".lang.python" },
 	{ import = extras .. ".lang.sql" },
 	{ import = extras .. ".lang.yaml" },
+	{ import = extras .. ".coding.yanky" },
 	{ import = extras .. ".dap.core" },
 	{ import = extras .. ".ai.copilot-chat" },
 	{ import = extras .. ".editor.harpoon2" },
