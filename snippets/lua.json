@@ -1,0 +1,19 @@
+{
+  "Lua File Header": {
+    "prefix": "copyright",
+    "body": [
+      "--[[",
+      "  ============================================================",
+      "  Author: Cristian de la Hoz (GitHub: cristiandelahooz)",
+      "  Alias: sakidoa (For fun)",
+      "",
+      "  Copyright (C) 2025 - All Rights Reserved",
+      "  ${1:Brief description of this file's purpose.}",
+      "",
+      "  Feel free to fork, modify, and share, but please give credit where it's due.",
+      "  ============================================================",
+      "]]"
+    ],
+    "description": "Standard project file header with placeholder for file description."
+  }
+}
