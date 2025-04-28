@@ -7,7 +7,7 @@
       },
       {
         "language": "lua",
-        "path": "./project-specific/nvim-lua.json"
+        "path": "./lua.json"
       },
       {
         "language": [
