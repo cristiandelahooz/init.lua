@@ -1,13 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local delahozGroup = augroup("delahoz", {})
 local autocmd = vim.api.nvim_create_autocmd
-
--- Turn off paste mode when leaving insert
---[[autocmd("InsertLeave", {
-	group = delahozGroup,
-	pattern = "*",
-	command = "set nopaste",
-})]]
+local keymap = require("util.helper_functions").keymap
 
 -- Disable the concealing in some file formats
 -- The default conceallevel is 3 in LazyVim
@@ -29,17 +23,11 @@ autocmd("LspAttach", {
 	group = delahozGroup,
 	callback = function(e)
 		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "<leader>f", function()
+		keymap("n", "<leader>f", function()
 			require("conform").format({ bufnr = 0 })
-		end, { desc = "Format" })
-		vim.keymap.set("n", "<leader>rn", function()
-			vim.lsp.buf.rename()
-		end, opts)
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.get_next()
-		end, opts)
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.get_prev()
-		end, opts)
+		end, opts, "Format current buffer")
+		keymap("n", "<leader>rn", vim.lsp.buf.rename, opts, "Rename symbol under cursor")
+		keymap("n", "]d", vim.diagnostic.get_next, opts, "Go to next diagnostic")
+		keymap("n", "[d", vim.diagnostic.get_prev, opts, "Go to previous diagnostic")
 	end,
 })
