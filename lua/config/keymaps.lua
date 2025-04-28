@@ -1,5 +1,6 @@
 local discipline = require("sakidoa.discipline")
 
+local functions = require("sakidoa.keymaps_functions")
 discipline.cowboy()
 
 local keymap = require("util.helper_functions").keymap
@@ -87,6 +88,9 @@ keymap("n", "<C-w><left>", "<C-w><", opts, "Resize window left")
 keymap("n", "<C-w><right>", "<C-w>>", opts, "Resize window right")
 keymap("n", "<C-w><up>", "<C-w>+", opts, "Resize window up")
 keymap("n", "<C-w><down>", "<C-w>-", opts, "Resize window down")
+
+-- keymaps that use functions
+keymap("n", "<leader>r", functions.RunCurrentFile, opts, "Run current file")
 
 vim.api.nvim_create_user_command("ToggleInlayHints", function()
 	require("sakidoa.lsp").toggleInlayHints()
