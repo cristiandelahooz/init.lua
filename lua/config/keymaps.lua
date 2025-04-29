@@ -93,9 +93,9 @@ keymap("n", "<C-w><down>", "<C-w>-", opts, "Resize window down")
 keymap("n", "<leader>r", functions.RunCurrentFile, opts, "Run current file")
 
 vim.api.nvim_create_user_command("ToggleInlayHints", function()
-	require("sakidoa.lsp").toggleInlayHints()
+  require("sakidoa.lsp").toggleInlayHints()
 end, {})
 
 vim.api.nvim_create_user_command("ToggleAutoformat", function()
-	require("sakidoa.lsp").toggleAutoformat()
+  require("sakidoa.lsp").toggleAutoformat()
 end, {})
