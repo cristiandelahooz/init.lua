@@ -1,7 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
-local delahozGroup = augroup("delahoz", {})
 local autocmd = vim.api.nvim_create_autocmd
 local keymap = require("util.helper_functions").keymap
+local delahozGroup = augroup("delahoz", {})
 
 -- Disable the concealing in some file formats
 -- The default conceallevel is 3 in LazyVim
@@ -11,12 +11,6 @@ autocmd("FileType", {
   callback = function()
     vim.opt.conceallevel = 0
   end,
-})
-
-autocmd("BufRead", {
-  group = delahozGroup,
-  pattern = "*.conf",
-  command = "set filetype=apache",
 })
 
 autocmd("LspAttach", {
