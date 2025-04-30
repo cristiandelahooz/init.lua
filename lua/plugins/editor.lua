@@ -75,6 +75,7 @@ return {
           builtin.find_files({
             no_ignore = false,
             hidden = true,
+            previewer = false,
             file_ignore_patterns = { "%.git/" },
           })
         end,
