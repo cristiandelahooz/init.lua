@@ -75,9 +75,24 @@ return {
           builtin.find_files({
             no_ignore = false,
             hidden = true,
+            file_ignore_patterns = { "%.git/" },
           })
         end,
         desc = "Lists files in your current working directory, respects .gitignore",
+      },
+      {
+        ";F",
+        function()
+          ---@type table
+          local builtin = require("telescope.builtin")
+          builtin.find_files({
+            cwd = vim.fn.getcwd(-1, -1), -- Use root directory
+            no_ignore = false,
+            hidden = true,
+            file_ignore_patterns = { "%.git/" },
+          })
+        end,
+        desc = "Lists files in the root directory, respects .gitignore",
       },
       {
         ";r",
