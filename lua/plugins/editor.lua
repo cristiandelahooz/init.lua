@@ -222,7 +222,7 @@ return {
   },
   {
     "mbbill/undotree",
-    event = "VeryLazy",
+    event = "BufReadPre",
     config = function()
       vim.keymap.set(
         "n",
