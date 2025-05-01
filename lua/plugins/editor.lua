@@ -166,6 +166,7 @@ return {
             respect_gitignore = false,
             hidden = true,
             grouped = true,
+            previewer = false,
             initial_mode = "normal",
             layout_config = { height = 40 },
           })
@@ -175,7 +176,6 @@ return {
     },
     config = function(_, opts)
       local telescope = require("telescope")
-      local actions = require("telescope.actions")
       ---@diagnostic disable-next-line
       local fb_actions = require("telescope").extensions.file_browser.actions
 
@@ -222,8 +222,14 @@ return {
   },
   {
     "mbbill/undotree",
+    event = "VeryLazy",
     config = function()
-      vim.keymap.set("n", "<leader>U", vim.cmd.UndotreeToggle)
+      vim.keymap.set(
+        "n",
+        "<leader>U",
+        vim.cmd.UndotreeToggle,
+        { noremap = true, silent = true, desc = "Toggle undotree panel" }
+      )
     end,
   },
 }
