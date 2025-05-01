@@ -39,7 +39,6 @@ M.spec = {
   { import = extras .. ".lang.docker" },
   { import = extras .. ".lang.git" },
   { import = extras .. ".lang.go" },
-  { import = extras .. ".lang.haskell" },
   { import = extras .. ".lang.markdown" },
   { import = extras .. ".lang.python" },
   { import = extras .. ".lang.sql" },
