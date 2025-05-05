@@ -1,58 +1,72 @@
 {
-	"Console Log": {
-		"prefix": "clg",
-		"body": ["console.log(${1:value});"],
-		"description": "Log output to console"
-	},
-	"Function Declaration": {
-		"prefix": "fn",
-		"body": ["function ${1:name}(${2:params}) {", "\t${3:// body}", "}"],
-		"description": "Create a function declaration"
-	},
-	"Arrow Function": {
-		"prefix": "afn",
-		"body": ["const ${1:name} = (${2:params}) => {", "\t${3:// body}", "}"],
-		"description": "Create an arrow function"
-	},
-	"Import Statement": {
-		"prefix": "imp",
-		"body": ["import ${1:module} from '${2:path}';"],
-		"description": "Import a module"
-	},
-	"Export Statement": {
-		"prefix": "exp",
-		"body": ["export ${1:default }${2:value};"],
-		"description": "Export a value"
-	},
-	"Error Handling Throw New Error (ee)": {
-		"prefix": "ee",
-		"body": [
-			"try {",
-			"\t${1:// code to try}",
-			"} catch (${2:error}) {",
-			"\tthrow new Error(${2:error});",
-			"}"
-		],
-		"description": "Insert try-catch block throwing a new Error."
-	},
-	"Error Handling Console Error (el)": {
-		"prefix": "el",
-		"body": [
-			"try {",
-			"\t${1:// code to try}",
-			"} catch (${2:error}) {",
-			"\tconsole.error(\"Error:\", ${2:error});",
-			"}"
-		],
-		"description": "Insert try-catch block logging error to console.error."
-	},
-	"Error Handling Assertion (ea)": {
-		"prefix": "ea",
-		"body": [
-			"if (!${1:condition}) {",
-			"\tthrow new Error(\"Assertion failed: ${2:message}\");",
-			"}"
-		],
-		"description": "Insert an assertion for error handling."
-	}
+  "Console Log": {
+    "prefix": "clg",
+    "body": [
+      "console.log(${1:value});"
+    ],
+    "description": "Log output to console"
+  },
+  "Function Declaration": {
+    "prefix": "fn",
+    "body": [
+      "function ${1:name}(${2:params}) {",
+      "\t${3:// body}",
+      "}"
+    ],
+    "description": "Create a function declaration"
+  },
+  "Arrow Function": {
+    "prefix": "afn",
+    "body": [
+      "const ${1:name} = (${2:params}) => {",
+      "\t${3:// body}",
+      "}"
+    ],
+    "description": "Create an arrow function"
+  },
+  "Import Statement": {
+    "prefix": "imp",
+    "body": [
+      "import ${2:module} from '${1:path}';"
+    ],
+    "description": "Import a module"
+  },
+  "Export Statement": {
+    "prefix": "exp",
+    "body": [
+      "export ${1:default }${2:value};"
+    ],
+    "description": "Export a value"
+  },
+  "Error Handling Throw New Error (ee)": {
+    "prefix": "ee",
+    "body": [
+      "try {",
+      "\t${1:// code to try}",
+      "} catch (${2:error}) {",
+      "\tthrow new Error(${2:error});",
+      "}"
+    ],
+    "description": "Insert try-catch block throwing a new Error."
+  },
+  "Error Handling Console Error (el)": {
+    "prefix": "el",
+    "body": [
+      "try {",
+      "\t${1:// code to try}",
+      "} catch (${2:error}) {",
+      "\tconsole.error(\"Error:\", ${2:error});",
+      "}"
+    ],
+    "description": "Insert try-catch block logging error to console.error."
+  },
+  "Error Handling Assertion (ea)": {
+    "prefix": "ea",
+    "body": [
+      "if (!${1:condition}) {",
+      "\tthrow new Error(\"Assertion failed: ${2:message}\");",
+      "}"
+    ],
+    "description": "Insert an assertion for error handling."
+  }
 }
