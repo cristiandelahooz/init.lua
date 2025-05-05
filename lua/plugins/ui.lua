@@ -30,7 +30,6 @@ return {
         view = "notify_send",
         opts = { stop = false },
       })
-
       opts.commands = {
         all = {
           -- options for the message history that you get with `:Noice`
@@ -49,6 +48,10 @@ return {
         end,
       })
 
+      local set_hl = vim.api.nvim_set_hl
+      set_hl(0, "NoiceCmdlinePopup", { bg = "#001419" })
+      set_hl(0, "SnacksInputNormal", { bg = "#001419", fg = "#849900" }) -- inner content input
+      set_hl(0, "DiagnosticInfo", { bg = "#001419", fg = "#664c00" }) -- imput border
       opts.presets.lsp_doc_border = true
     end,
   },
