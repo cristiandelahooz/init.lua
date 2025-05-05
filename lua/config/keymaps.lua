@@ -20,8 +20,6 @@ keymap("n", "<Leader>D", '"_D', opts, "Delete to end of line without yanking")
 keymap("v", "<Leader>d", '"_d', opts, "Delete selection without yanking")
 keymap("v", "<Leader>D", '"_D', opts, "Delete selection to end of line without yanking")
 
--- Exit insert mode
-keymap("i", "qj", "<Esc>:w<CR>", opts, "Exit insert mode and save")
 
 -- Center screen while scrolling
 keymap({ "n", "v" }, "<C-u>", "<C-u>zz", opts, "Scroll up and center")
