@@ -62,8 +62,12 @@ M.defaults = {
   -- version = "*", -- try installing the latest stable version for plugins that support semver
 }
 M.dev = {
-  path = "~/ghq/github.com",
+  -- Directory where you store your local plugin projects. If a function is used,
+  -- the plugin directory (e.g. `~/projects/plugin-name`) must be returned.
+  ---@type string | fun(plugin: LazyPlugin): string
+  path = "~/ghq/github.com/cristiandelahooz",
 }
+
 M.checker = { enabled = true } -- automatically check for plugin updates
 M.performance = {
   cache = {
