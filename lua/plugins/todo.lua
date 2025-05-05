@@ -1,6 +1,7 @@
 return {
   {
-    dir = "~/ghq/github.com/cristiandelahooz/todo.nvim",
+    "todo.nvim",
+    dev = true,
     -- Load lazily to test performance
     event = "VeryLazy",
     config = function()
