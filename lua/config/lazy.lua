@@ -47,6 +47,7 @@ M.spec = {
   { import = extras .. ".dap.core" },
   { import = extras .. ".ai.copilot-chat" },
   { import = extras .. ".editor.harpoon2" },
+  { import = extras .. ".editor.inc-rename" },
   { import = extras .. ".formatting.biome" },
   { import = extras .. ".util.dot" },
   { import = extras .. ".util.mini-hipatterns" },
