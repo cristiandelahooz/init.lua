@@ -208,6 +208,8 @@ return {
               ["N"] = fb_actions.create,
               ---@diagnostic disable-next-line
               ["h"] = fb_actions.goto_parent_dir,
+              ---@diagnostic disable-next-line
+              ["."] = fb_actions.toggle_hidden,
               ["/"] = function()
                 vim.cmd("startinsert")
               end,
