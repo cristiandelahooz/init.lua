@@ -12,6 +12,7 @@ function M.hex_to_rgb(hex)
     local char2 = string.sub(hex, i * 2 + 3, i * 2 + 3)
     local digit1 = string.find(hexChars, char1) - 1
     local digit2 = string.find(hexChars, char2) - 1
+    ---@type number
     ret[i + 1] = (digit1 * 16 + digit2) / 255.0
   end
   return ret
@@ -34,25 +35,32 @@ function M.rgbToHsl(r, g, b)
   local s = 0
   local l = 0
 
+  ---@type number
   l = (max + min) / 2
 
   if max == min then
     h, s = 0, 0 -- achromatic
   else
+    ---@type number
     local d = max - min
     if l > 0.5 then
+      ---@type number
       s = d / (2 - max - min)
     else
+      ---@type number
       s = d / (max + min)
     end
     if max == r then
+      ---@type number
       h = (g - b) / d
       if g < b then
         h = h + 6
       end
     elseif max == g then
+      ---@type number
       h = (b - r) / d + 2
     elseif max == b then
+      ---@type number
       h = (r - g) / d + 4
     end
     h = h / 6
@@ -73,12 +81,17 @@ end
  * @return  Array           The RGB representation
 ]]
 function M.hslToRgb(h, s, l)
+  ---@type number, number, number
   local r, g, b
 
   if s == 0 then
     r, g, b = l, l, l -- achromatic
   else
-    function hue2rgb(p, q, t)
+    ---@param p number
+    ---@param q number
+    ---@param t number
+    ---@return number
+    local function hue2rgb(p, q, t)
       if t < 0 then
         t = t + 1
       end
@@ -97,12 +110,16 @@ function M.hslToRgb(h, s, l)
       return p
     end
 
+    ---@type number
     local q
     if l < 0.5 then
+      ---@type number
       q = l * (1 + s)
     else
+      ---@type number
       q = l + s - l * s
     end
+    ---@type number
     local p = 2 * l - q
 
     r = hue2rgb(p, q, h + 1 / 3)
