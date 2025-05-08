@@ -48,10 +48,6 @@ return {
         end,
       })
 
-      local set_hl = vim.api.nvim_set_hl
-      set_hl(0, "NoiceCmdlinePopup", { bg = "#001419" })
-      set_hl(0, "SnacksInputNormal", { bg = "#001419", fg = "#849900" }) -- inner content input
-      set_hl(0, "DiagnosticInfo", { bg = "#001419", fg = "#664c00" }) -- imput border
       opts.presets.lsp_doc_border = true
     end,
   },
@@ -203,5 +199,8 @@ return {
         desc = "Toggle zoom mode",
       },
     },
+      local set_hl = vim.api.nvim_set_hl
+      set_hl(0, "SnacksInputNormal", { bg = "#001419", fg = "#849900" }) -- inner content input
+      set_hl(0, "SnacksInputBorder", { bg = "#001419", fg = "#664c00" }) -- input border
   },
 }
