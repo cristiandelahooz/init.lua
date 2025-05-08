@@ -1,6 +1,169 @@
 return {
   {
-    enabled = false,
+    "folke/snacks.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for snacks.nvim
+    },
+    keys = {
+      {
+        ";;",
+        function()
+          require("snacks").picker.resume()
+        end,
+        desc = "Resume the previous snacks picker",
+      },
+      {
+        ";f",
+        function()
+          require("snacks").picker.files({
+            hidden = true,
+            no_ignore = false,
+            file_ignore_patterns = { "%.git/" },
+          })
+        end,
+        desc = "Lists files in your current working directory, respects .gitignore",
+      },
+      {
+        ";F",
+        function()
+          require("snacks").picker.files({
+            cwd = vim.fn.getcwd(-1, -1), -- Use root directory
+            hidden = true,
+            no_ignore = false,
+            file_ignore_patterns = { "%.git/" },
+          })
+        end,
+        desc = "Lists files in the root directory, respects .gitignore",
+      },
+      {
+        ";r",
+        function()
+          require("snacks").picker.grep({
+            additional_args = { "--hidden" },
+          })
+        end,
+        desc = "Search for a string in your current working directory, respects .gitignore",
+      },
+      {
+        "\\\\",
+        function()
+          require("snacks").picker.buffers()
+        end,
+        desc = "Lists open buffers",
+      },
+      {
+        ";h",
+        function()
+          require("snacks").picker.help()
+        end,
+        desc = "Lists available help tags and opens help on <cr>",
+      },
+      {
+        ";z",
+        function()
+          require("snacks").picker.zoxide()
+        end,
+        desc = "Lists directories from zoxide",
+      },
+      {
+        ";e",
+        function()
+          require("snacks").picker.diagnostics()
+        end,
+        desc = "Lists diagnostics for all open buffers",
+      },
+      {
+        ";s",
+        function()
+          require("snacks").picker.lsp_symbols()
+        end,
+        desc = "Lists function names, variables from Treesitter",
+      },
+      {
+        "<leader>n",
+        function()
+          require("snacks").notifier.show_history()
+        end,
+        desc = "Show the history of notifications",
+      },
+    },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-file-browser.nvim",
+    },
+    keys = {
+      {
+        "<leader>pv",
+        function()
+          local telescope = require("telescope")
+
+          local function telescope_buffer_dir()
+            return vim.fn.expand("%:p:h")
+          end
+
+          telescope.extensions.file_browser.file_browser({
+            path = "%:p:h",
+            cwd = telescope_buffer_dir(),
+            respect_gitignore = false,
+            hidden = true,
+            grouped = true,
+            previewer = false,
+            initial_mode = "normal",
+            layout_config = { height = 40 },
+          })
+        end,
+        desc = "Open File Browser with the path of the current buffer",
+      },
+    },
+    config = function(_, opts)
+      local telescope = require("telescope")
+      ---@diagnostic disable-next-line
+      local fb_actions = require("telescope").extensions.file_browser.actions
+
+      ---@diagnostic disable-next-line
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+        wrap_results = true,
+        layout_strategy = "horizontal",
+        sorting_strategy = "ascending",
+        winblend = 0,
+        mappings = {
+          n = {},
+        },
+      })
+      opts.pickers = {
+        diagnostics = {
+          layout_config = {
+            preview_cutoff = 9999,
+          },
+        },
+      }
+      opts.extensions = {
+        file_browser = {
+          -- disables netrw and use telescope-file-browser in its place
+          mappings = {
+            -- your custom insert mode mappings
+            ["n"] = {
+              -- your custom normal mode mappings
+              ---@diagnostic disable-next-line
+              ["N"] = fb_actions.create,
+              ---@diagnostic disable-next-line
+              ["h"] = fb_actions.goto_parent_dir,
+              ---@diagnostic disable-next-line
+              ["."] = fb_actions.toggle_hidden,
+              ["/"] = function()
+                vim.cmd("startinsert")
+              end,
+            },
+          },
+        },
+      }
+      telescope.setup(opts)
+      require("telescope").load_extension("file_browser")
+    end,
+  },
+  {
     "folke/flash.nvim",
     opts = {
       search = {
@@ -48,180 +211,6 @@ return {
     },
   },
 
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
-      "nvim-telescope/telescope-file-browser.nvim",
-    },
-    keys = {
-      {
-        ";;",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.resume()
-        end,
-        desc = "Resume the previous telescope picker",
-      },
-      {
-        ";f",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
-            no_ignore = false,
-            hidden = true,
-            previewer = false,
-            file_ignore_patterns = { "%.git/" },
-          })
-        end,
-        desc = "Lists files in your current working directory, respects .gitignore",
-      },
-      {
-        ";F",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
-            cwd = vim.fn.getcwd(-1, -1), -- Use root directory
-            no_ignore = false,
-            hidden = true,
-            file_ignore_patterns = { "%.git/" },
-          })
-        end,
-        desc = "Lists files in the root directory, respects .gitignore",
-      },
-      {
-        ";r",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.live_grep({
-            additional_args = { "--hidden" },
-          })
-        end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
-      },
-      {
-        "\\\\",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.buffers()
-        end,
-        desc = "Lists open buffers",
-      },
-      {
-        ";t",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.help_tags()
-        end,
-        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
-      },
-      {
-        ";e",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.diagnostics()
-        end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
-      },
-      {
-        ";s",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.treesitter()
-        end,
-        desc = "Lists Function names, variables, from Treesitter",
-      },
-      {
-        ";c",
-        function()
-          ---@type table
-          local builtin = require("telescope.builtin")
-          builtin.lsp_incoming_calls()
-        end,
-        desc = "Lists LSP incoming calls for words under cursor",
-      },
-      {
-        "<leader>pv",
-        function()
-          local telescope = require("telescope")
-
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = telescope_buffer_dir(),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-            layout_config = { height = 40 },
-          })
-        end,
-        desc = "Open File Browser with the path of the current buffer",
-      },
-    },
-    config = function(_, opts)
-      local telescope = require("telescope")
-      ---@diagnostic disable-next-line
-      local fb_actions = require("telescope").extensions.file_browser.actions
-
-      ---@diagnostic disable-next-line
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-        wrap_results = true,
-        layout_strategy = "horizontal",
-        sorting_strategy = "ascending",
-        winblend = 0,
-        mappings = {
-          n = {},
-        },
-      })
-      opts.pickers = {
-        diagnostics = {
-          --theme = "ivy",
-          layout_config = {
-            preview_cutoff = 9999,
-          },
-        },
-      }
-      opts.extensions = {
-        file_browser = {
-          -- disables netrw and use telescope-file-browser in its place
-          mappings = {
-            -- your custom insert mode mappings
-            ["n"] = {
-              -- your custom normal mode mappings
-              ---@diagnostic disable-next-line
-              ["N"] = fb_actions.create,
-              ---@diagnostic disable-next-line
-              ["h"] = fb_actions.goto_parent_dir,
-              ---@diagnostic disable-next-line
-              ["."] = fb_actions.toggle_hidden,
-              ["/"] = function()
-                vim.cmd("startinsert")
-              end,
-            },
-          },
-        },
-      }
-      telescope.setup(opts)
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("file_browser")
-    end,
-  },
   {
     "mbbill/undotree",
     event = "BufReadPre",
