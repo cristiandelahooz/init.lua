@@ -173,19 +173,14 @@ return {
 
   {
     "folke/snacks.nvim",
-    keys = {
-      {
-        ";z",
-        function()
-          Snacks.zen.zoom()
-        end,
-        desc = "Toggle zoom mode",
-      },
-    },
     opts = function(_, opts)
       local set_hl = vim.api.nvim_set_hl
       set_hl(0, "SnacksInputNormal", { bg = "#001419", fg = "#849900" }) -- inner content input
       set_hl(0, "SnacksInputBorder", { bg = "#001419", fg = "#664c00" }) -- input border
+
+      --Toggle
+      Snacks.toggle.zoom():map(";z", { noremap = true, silent = true, desc = "toggle zoom mode" })
+
       opts.dashboard = opts.dashboard or {}
       opts.dashboard.preset = opts.dashboard.preset or {}
       opts.dashboard.preset.header = [[
