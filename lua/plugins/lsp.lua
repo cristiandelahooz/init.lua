@@ -2,6 +2,7 @@ return {
   -- tools
   {
     "williamboman/mason.nvim",
+    version = "v1.*",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "stylua",
@@ -19,6 +20,8 @@ return {
     end,
   },
 
+  --temporary spec patch for LazyVim compatibility with breaking change
+  { "williamboman/mason-lspconfig.nvim", version = "v1.*" },
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
