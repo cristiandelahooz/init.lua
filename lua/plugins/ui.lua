@@ -179,7 +179,7 @@ return {
       set_hl(0, "SnacksInputBorder", { bg = "#001419", fg = "#664c00" }) -- input border
 
       --Toggle
-      Snacks.toggle.zoom():map(";z", { noremap = true, silent = true, desc = "toggle zoom mode" })
+      Snacks.toggle.zoom():map(";Z", { noremap = true, silent = true, desc = "toggle zoom mode" })
 
       opts.dashboard = opts.dashboard or {}
       opts.dashboard.preset = opts.dashboard.preset or {}
