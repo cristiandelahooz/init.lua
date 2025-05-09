@@ -9,6 +9,10 @@ return {
       opts.picker.enabled = true
       opts.picker.layout = "select"
       opts.picker.prompt = ":: "
+      opts.picker.win.input.keys = vim.tbl_extend("force", opts.picker.win.input.keys or {}, {
+        ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+        ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+      })
     end,
     keys = {
       {
