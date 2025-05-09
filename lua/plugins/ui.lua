@@ -194,10 +194,6 @@ return {
           ....................................................           
                                         --                               
       ]]
-      opts.picker = opts.picker or {}
-      opts.picker.enabled = true
-      opts.picker.layout = "select"
-      opts.picker.prompt = ":: "
     end,
   },
 }

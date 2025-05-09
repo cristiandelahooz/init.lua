@@ -4,6 +4,12 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for snacks.nvim
     },
+    opts = function(_, opts)
+      opts.picker = opts.picker or {}
+      opts.picker.enabled = true
+      opts.picker.layout = "select"
+      opts.picker.prompt = ":: "
+    end,
     keys = {
       {
         ";;",
