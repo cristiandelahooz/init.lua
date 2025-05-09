@@ -20,11 +20,10 @@ keymap("n", "<Leader>D", '"_D', opts, "Delete to end of line without yanking")
 keymap("v", "<Leader>d", '"_d', opts, "Delete selection without yanking")
 keymap("v", "<Leader>D", '"_D', opts, "Delete selection to end of line without yanking")
 
-
 --Disable copilot
-keymap("i", "<C-e>", function()
-  vim.cmd("Copilot disable")
-  vim.notify("Copilot desactivado", vim.log.levels.INFO)
+keymap({ "i", "n" }, "<C-e>", function()
+  require("copilot.suggestion").toggle_auto_trigger()
+  vim.notify("Copilot auto trigger toggled")
 end, opts, "Disable copilot")
 -- Center screen while scrolling
 keymap({ "n", "v" }, "<C-u>", "<C-u>zz", opts, "Scroll up and center")
