@@ -123,7 +123,7 @@ return {
       local fb_actions = require("telescope").extensions.file_browser.actions
 
       ---@diagnostic disable-next-line
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
         wrap_results = true,
         layout_strategy = "horizontal",
         sorting_strategy = "ascending",
