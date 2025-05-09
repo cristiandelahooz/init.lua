@@ -196,7 +196,7 @@ return {
       ]]
       opts.picker = opts.picker or {}
       opts.picker.enabled = true
-      opts.picker.layout = "telescope"
+      opts.picker.layout = "select"
     end,
   },
 }
