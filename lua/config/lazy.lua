@@ -15,10 +15,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local M = {}
 local extras = "lazyvim.plugins.extras"
+
 ---@type LazyConfig
 local M = {}
+
 M.spec = {
   -- add LazyVim and import its plugins
   {
@@ -56,6 +57,7 @@ M.spec = {
   { import = extras .. ".util.mini-hipatterns" },
   { import = "plugins" },
 }
+
 M.defaults = {
   -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
   -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
@@ -65,14 +67,15 @@ M.defaults = {
   version = false, -- always use the latest git commit
   -- version = "*", -- try installing the latest stable version for plugins that support semver
 }
+
 M.dev = {
   -- Directory where you store your local plugin projects. If a function is used,
   -- the plugin directory (e.g. `~/projects/plugin-name`) must be returned.
-  ---@type string | fun(plugin: LazyPlugin): string
   path = "~/ghq/github.com/cristiandelahooz",
 }
 
 M.checker = { enabled = true } -- automatically check for plugin updates
+
 M.performance = {
   cache = {
     enabled = true,
@@ -92,6 +95,7 @@ M.performance = {
     },
   },
 }
+
 M.ui = {
   custom_keys = {
     ["<localleader>d"] = function(plugin)
@@ -99,6 +103,9 @@ M.ui = {
     end,
   },
 }
+
 M.debug = false
 
 require("lazy").setup(M)
+
+return M
