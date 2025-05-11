@@ -17,6 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local M = {}
 local extras = "lazyvim.plugins.extras"
+---@type LazyConfig
+local M = {}
 M.spec = {
   -- add LazyVim and import its plugins
   {
