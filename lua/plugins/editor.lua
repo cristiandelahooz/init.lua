@@ -104,6 +104,7 @@ return {
   },
   {
     "folke/flash.nvim",
+    enabled = false,
     opts = {
       search = {
         forward = true,
