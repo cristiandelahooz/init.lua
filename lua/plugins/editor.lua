@@ -7,7 +7,6 @@ return {
     ---@param opts snacks.config
     opts = function(_, opts)
       opts.picker = opts.picker or {}
-      opts.picker.enabled = true
       opts.picker.layout = "vertical"
       opts.picker.sources = opts.picker.sources or {}
       opts.picker.sources.explorer = opts.picker.sources.explorer or {}
