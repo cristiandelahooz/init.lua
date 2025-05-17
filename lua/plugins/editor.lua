@@ -4,6 +4,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for snacks.nvim
     },
+    ---@param opts snacks.config
     opts = function(_, opts)
       opts.picker = opts.picker or {}
       opts.picker.enabled = true
