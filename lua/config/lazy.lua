@@ -45,6 +45,7 @@ M.spec = {
   { import = extras .. ".lang.markdown" },
   { import = extras .. ".lang.python" },
   { import = extras .. ".lang.sql" },
+  { import = extras .. ".lang.tex" },
   { import = extras .. ".lang.yaml" },
   { import = extras .. ".coding.yanky" },
   { import = extras .. ".dap.core" },
