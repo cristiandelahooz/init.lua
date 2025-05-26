@@ -39,7 +39,7 @@ function M.RunCurrentFile()
       output_file,
       output_file
     ),
-    java = "gd run",
+    java = "java " .. escaped_filename,
     typescriptreact = "tsx " .. escaped_filename,
     javascriptreact = "node " .. escaped_filename,
   }
