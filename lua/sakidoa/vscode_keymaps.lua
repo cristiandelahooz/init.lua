@@ -74,6 +74,7 @@ if vim.g.vscode then
   local vscode_actions = {
     { { "n", "v" }, "<c-/>", "workbench.action.terminal.toggleTerminal", "Toggle terminal" },
     { { "n", "v" }, "<leader>b", "editor.debug.action.toggleBreakpoint", "Toggle breakpoint" },
+    { { "n", "v" }, "<leader>d", "workbench.action.debug.start", "Start debuggin" },
     { { "n", "v" }, "K", "editor.action.showHover", "Show hover" },
     { { "n", "v" }, "<leader>ca", "editor.action.quickFix", "Quick fix" },
     { { "n", "v" }, ";e", "workbench.actions.view.problems", "Show problems" },
