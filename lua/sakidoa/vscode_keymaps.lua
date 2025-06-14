@@ -82,6 +82,7 @@ if vim.g.vscode then
     { { "n", "v" }, ";;", "workbench.action.showCommands", "Show commands" },
     { { "n", "v" }, "<leader>r", "code-runner.run", "Run code" },
     { { "n", "v" }, "<leader>f", "editor.action.formatDocument", "Format document" },
+    { { "n", "v" }, "<leader>e", "workbench.view.explorer", "Open explorer" },
     { "n", "sv", "workbench.action.splitEditor", "Split window horizontally" },
     { "n", "sh", "workbench.action.focusLeftGroup", "Move to left window" },
     { "n", "sl", "workbench.action.focusRightGroup", "Move to right window" },
@@ -109,8 +110,7 @@ keymap("n", "<Leader>d", '"_d', nil, "Delete without yanking")
 keymap("n", "<Leader>D", '"_D', nil, "Delete to end of line without yanking")
 keymap("v", "<Leader>d", '"_d', nil, "Delete selection without yanking")
 keymap("v", "<Leader>D", '"_D', nil, "Delete selection to end of line without yanking")
-keymap({ "n", "v" }, "<C-u>", "<C-u>zz", nil, "Scroll up and center")
-keymap({ "n", "v" }, "<C-d>", "<C-d>zz", nil, "Scroll down and center")
+keymap({ "n", "v" }, "<C-u>", "20k", nil, "Scroll up and center")
 keymap("n", "Q", ":qall<CR>", nil, "Quit all")
 keymap("n", "+", "<C-a>", nil, "Increment number")
 keymap("n", "-", "<C-x>", nil, "Decrement number")
