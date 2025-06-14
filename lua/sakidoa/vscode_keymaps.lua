@@ -80,7 +80,7 @@ if vim.g.vscode then
     { { "n", "v" }, ";e", "workbench.actions.view.problems", "Show problems" },
     { { "n", "v" }, ";f", "workbench.action.quickOpen", "Quick open" },
     { { "n", "v" }, ";;", "workbench.action.showCommands", "Show commands" },
-    { { "n", "v" }, "<leader>pr", "code-runner.run", "Run code" },
+    { { "n", "v" }, "<leader>r", "code-runner.run", "Run code" },
     { { "n", "v" }, "<leader>f", "editor.action.formatDocument", "Format document" },
     { "n", "sv", "workbench.action.splitEditor", "Split window horizontally" },
     { "n", "sh", "workbench.action.focusLeftGroup", "Move to left window" },
