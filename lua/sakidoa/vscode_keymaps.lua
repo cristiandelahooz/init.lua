@@ -65,6 +65,9 @@ end
 -- I kow is redundant
 -- Deshabilitar ; predeterminado para evitar conflictos
 vim.keymap.set("n", ";", "<Nop>", { noremap = true, silent = true })
+-- Configuración general de Neovim
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Keymaps específicos para VS Code
 if vim.g.vscode then
@@ -94,10 +97,6 @@ if vim.g.vscode then
     keymap(map[1], map[2], "<cmd>lua require('vscode').action('" .. map[3] .. "')<CR>", nil, map[4])
   end
 end
-
--- Configuración general de Neovim
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- Keymaps generales
 keymap("n", "<Space>", "", nil, "Disable space")
