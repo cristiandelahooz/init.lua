@@ -17,11 +17,16 @@ autocmd("LspAttach", {
   group = delahozGroup,
   callback = function(e)
     local opts = { buffer = e.buf }
+    local function jump_diagnostic(direction)
+      return function()
+        vim.diagnostic.jump({ count = direction, float = true })
+      end
+    end
     keymap("n", "<leader>f", function()
       require("conform").format({ bufnr = 0 })
     end, opts, "Format current buffer")
     keymap("n", "<leader>rn", vim.lsp.buf.rename, opts, "Rename symbol under cursor")
-    keymap("n", "]d", vim.diagnostic.get_next, opts, "Go to next diagnostic")
-    keymap("n", "[d", vim.diagnostic.get_prev, opts, "Go to previous diagnostic")
+    keymap("n", "]d", jump_diagnostic(1), opts, "Go to next diagnostic")
+    keymap("n", "[d", jump_diagnostic(-1), opts, "Go to previous diagnostic")
   end,
 })
